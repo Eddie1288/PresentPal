@@ -4,15 +4,125 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/ic_launcher_background"
     tools:context=".MainActivity">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/selectEvent"
+        android:layout_width="250dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="57dp"
+        android:text="Select an Event"
+        android:textColor="#000000"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/christmas"
+        app:layout_constraintStart_toStartOf="@+id/birthday"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/birthday"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginTop="61dp"
+        android:layout_marginBottom="60dp"
+        android:onClick="Birthday"
+        android:text="Birthday"
+        app:layout_constraintBottom_toBottomOf="@+id/christmas"
+        app:layout_constraintStart_toStartOf="@+id/christmas"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/babyShower"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="Baby Shower"
+        app:layout_constraintBottom_toTopOf="@+id/mothersDay"
+        app:layout_constraintStart_toStartOf="@+id/mothersDay"
+        app:layout_constraintTop_toBottomOf="@+id/anniversary" />
+
+    <Button
+        android:id="@+id/mothersDay"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="Mother's Day"
+        app:layout_constraintBottom_toTopOf="@+id/fathersDay"
+        app:layout_constraintStart_toStartOf="@+id/fathersDay"
+        app:layout_constraintTop_toBottomOf="@+id/babyShower" />
+
+    <Button
+        android:id="@+id/houseWarming"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="House Warming"
+        app:layout_constraintBottom_toTopOf="@+id/date"
+        app:layout_constraintStart_toStartOf="@+id/date"
+        app:layout_constraintTop_toBottomOf="@+id/fathersDay" />
+
+    <Button
+        android:id="@+id/wedding"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="Wedding"
+        app:layout_constraintBottom_toTopOf="@+id/anniversary"
+        app:layout_constraintStart_toStartOf="@+id/anniversary"
+        app:layout_constraintTop_toBottomOf="@+id/christmas" />
+
+    <Button
+        android:id="@+id/customEvent"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="39dp"
+        android:layout_marginBottom="10dp"
+        android:text="Add A Custom Event"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shoppingList" />
+
+    <Button
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="Date"
+        app:layout_constraintBottom_toTopOf="@+id/shoppingList"
+        app:layout_constraintStart_toStartOf="@+id/shoppingList"
+        app:layout_constraintTop_toBottomOf="@+id/houseWarming" />
+
+    <Button
+        android:id="@+id/christmas"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="Christmas"
+        app:layout_constraintBottom_toTopOf="@+id/wedding"
+        app:layout_constraintStart_toStartOf="@+id/wedding"
+        app:layout_constraintTop_toBottomOf="@+id/selectEvent" />
+
+    <Button
+        android:id="@+id/shoppingList"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="Shopping List"
+        app:layout_constraintBottom_toTopOf="@+id/customEvent"
+        app:layout_constraintStart_toStartOf="@+id/customEvent"
+        app:layout_constraintTop_toBottomOf="@+id/date" />
+
+    <Button
+        android:id="@+id/fathersDay"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="Father's Day"
+        app:layout_constraintBottom_toTopOf="@+id/houseWarming"
+        app:layout_constraintStart_toStartOf="@+id/houseWarming"
+        app:layout_constraintTop_toBottomOf="@+id/mothersDay" />
+
+    <Button
+        android:id="@+id/anniversary"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="Anniversary"
+        app:layout_constraintBottom_toTopOf="@+id/babyShower"
+        app:layout_constraintStart_toStartOf="@+id/babyShower"
+        app:layout_constraintTop_toBottomOf="@+id/wedding" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
