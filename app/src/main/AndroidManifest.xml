@@ -13,14 +13,16 @@
         android:theme="@style/Theme.PresentPal"
         tools:targetApi="31">
         <activity
+            android:name=".GiftDetails"
+            android:exported="false" />
+        <activity
             android:name=".AddGift"
             android:exported="false"
-            android:parentActivityName=".giftlist"
-            />
+            android:parentActivityName=".giftlist" />
         <activity
             android:name=".giftlist"
             android:exported="false"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

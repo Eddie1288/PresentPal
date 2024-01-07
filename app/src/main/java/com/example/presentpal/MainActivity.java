@@ -34,8 +34,8 @@ public class MainActivity extends AppCompatActivity {
         person1Gift.add(new Gift("car"));
         person1Gift.add(new Gift("hands"));
         person1.setGifts(person1Gift);
-        namesList.add(person1);
 
+        namesList.add(person1);
         namesList.add(new Person("Bob"));
         namesList.add(new Person("Charlie"));
         namesList.add(new Person("Daniel"));
