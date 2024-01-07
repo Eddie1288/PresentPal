@@ -82,7 +82,7 @@ public class EditGift extends AppCompatActivity {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(EditGift.this, android.R.style.Theme_DeviceDefault_Dialog, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int date) {
-                        dateValue.setText(date+"-"+month+"-"+year);
+                        dateValue.setText(date+"-"+(month + 1)+"-"+year);
                     }
                 },mYear,mMonth, mDate);
                 datePickerDialog.show();
