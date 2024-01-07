@@ -99,7 +99,7 @@ public class giftlist extends AppCompatActivity {
                 // Create an Intent to launch add gift and pass the selected name
 
                 intent.putExtra("LIST", giftList);
-                intent.putExtra("POS", giftPos);
+                intent.putExtra("POS", personPos);
 //                intent.putExtra("LIST", giftList);
                 startActivityForResult(intent, ADD_ITEM_REQUEST);
             }
