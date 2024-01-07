@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
             ArrayList<Gift> Gifts = selectedPerson.getGifts();
 
             // Create an Intent to launch addgift and pass the selected name
-            Intent intent = new Intent(MainActivity.this, addgift.class);
+            Intent intent = new Intent(MainActivity.this, giftlist.class);
             intent.putExtra("NAME", selectedName);
             intent.putExtra("LIST", Gifts);
             startActivity(intent);

@@ -8,12 +8,12 @@ import android.widget.ListView;
 import android.content.Intent;
 import java.util.ArrayList;
 
-public class addgift extends AppCompatActivity {
+public class giftlist extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_addgift);
+        setContentView(R.layout.activity_giftlist);
 
         // Find the ListView
         ListView listView = findViewById(R.id.giftlistview);
