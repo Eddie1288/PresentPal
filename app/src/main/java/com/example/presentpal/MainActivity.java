@@ -56,51 +56,8 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("PresentPal");
 
-
         // Find the ListView
         ListView listView = findViewById(R.id.namelistview);
-
-        // This is the code for going to the edit activity for a specific person
-//        Intent intent = new Intent(MainActivity.this, EditPersonActivity.class);
-//        intent.putExtra("POS", 1);
-//        startActivity(intent);
-
-        ArrayList<Person> namesList = new ArrayList<>();
-        Person person1 = new Person("Alice");
-
-        ArrayList<Gift> person1Gift = new ArrayList<>();
-        person1Gift.add(new Gift("car"));
-        person1Gift.add(new Gift("hands"));
-        person1.setGifts(person1Gift);
-
-        namesList.add(person1);
-        namesList.add(new Person("Bob"));
-        namesList.add(new Person("Charlie"));
-        namesList.add(new Person("Daniel"));
-        namesList.add(new Person("Huey"));
-        namesList.add(new Person("Chris"));
-        namesList.add(new Person("Bill"));
-
-        // Add more names as needed
-
-        // Create an ArrayAdapter and set it to the ListView
-        ArrayAdapter<Person> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, namesList);
-        listView.setAdapter(adapter);
-
-        // Handle item clicks
-        listView.setOnItemClickListener((parent, view, position, id) -> {
-            Person selectedPerson = namesList.get(position);
-            String selectedName = selectedPerson.getName();
-            ArrayList<Gift> Gifts = selectedPerson.getGifts();
-
-
-
-            Intent intent = new Intent(MainActivity.this, giftlist.class);
-            intent.putExtra("NAME", selectedName);
-            intent.putExtra("POS", position);
-            intent.putExtra("LIST", Gifts);
-            startActivity(intent);
-        });
 
         // Retrieve list of people
         SharedPreferences preferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
@@ -135,6 +92,46 @@ public class MainActivity extends AppCompatActivity {
             globalVars.setEventList(new ArrayList<String>());
         }
 
+        // This is the code for going to the edit activity for a specific person
+//        Intent intent = new Intent(MainActivity.this, EditPersonActivity.class);
+//        intent.putExtra("POS", 1);
+//        startActivity(intent);
+
+//        ArrayList<Person> namesList = new ArrayList<>();
+//        Person person1 = new Person("Alice");
+//
+//        ArrayList<Gift> person1Gift = new ArrayList<>();
+//        person1Gift.add(new Gift("car"));
+//        person1Gift.add(new Gift("hands"));
+//        person1.setGifts(person1Gift);
+//
+//        namesList.add(person1);
+//        namesList.add(new Person("Bob"));
+//        namesList.add(new Person("Charlie"));
+//        namesList.add(new Person("Daniel"));
+//        namesList.add(new Person("Huey"));
+//        namesList.add(new Person("Chris"));
+//        namesList.add(new Person("Bill"));
+
+        // Add more names as needed
+
+        // Create an ArrayAdapter and set it to the ListView
+        ArrayAdapter<Person> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, globalVars.getPersonList());
+        listView.setAdapter(adapter);
+
+        // Handle item clicks
+        listView.setOnItemClickListener((parent, view, position, id) -> {
+            Person selectedPerson = globalVars.getPersonList().get(position);
+            String selectedName = selectedPerson.getName();
+            ArrayList<Gift> Gifts = selectedPerson.getGifts();
+
+            Intent intent = new Intent(MainActivity.this, giftlist.class);
+            intent.putExtra("NAME", selectedName);
+            intent.putExtra("PERSON_POS", position);
+            intent.putExtra("LIST", Gifts);
+            startActivity(intent);
+        });
+
         addPersonButton = findViewById(R.id.add_person_button);
 
         addPersonButton.setOnClickListener(new View.OnClickListener() {
@@ -143,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), AddPersonActivity.class));
             }
         });
-        
+
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {

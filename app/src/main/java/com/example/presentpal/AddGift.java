@@ -71,7 +71,6 @@ public class AddGift extends AppCompatActivity {
             Log.d("yeet", "test?: " + giftList);
         }
 
-
         cal.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
@@ -107,6 +106,7 @@ public class AddGift extends AppCompatActivity {
                 person.setGifts(finalGiftList);
 
                 // Update this person in the person list
+                Log.d("yeet", "position: " + position);
                 globalVars.getPersonList().set(position, person);
 
                 Intent resultIntent = new Intent();
