@@ -43,12 +43,10 @@
         android:layout_width="80dp"
         android:layout_height="25dp"
         android:layout_marginStart="44dp"
-        android:layout_marginEnd="19dp"
         android:layout_marginBottom="63dp"
         android:text="Occasion:"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/textInputLayout"
-        app:layout_constraintEnd_toStartOf="@+id/editTextText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/add_gift_link" />
 
@@ -62,19 +60,6 @@
         app:layout_constraintEnd_toStartOf="@+id/datepicker"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/add_gift_name" />
-
-    <EditText
-        android:id="@+id/editTextText"
-        android:layout_width="0dp"
-        android:layout_height="59dp"
-        android:layout_marginEnd="44dp"
-        android:ems="10"
-        android:hint="@string/editTextHint"
-        android:inputType="text"
-        app:layout_constraintBottom_toBottomOf="@+id/textView6"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView6"
-        app:layout_constraintTop_toTopOf="@+id/textView6" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/add_gift_link"
@@ -129,12 +114,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Event selected:"
-        app:layout_constraintBottom_toTopOf="@+id/textInputLayout"
+        app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.343"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_gift_link"
-        app:layout_constraintVertical_bias="0.513">
+        app:layout_constraintHorizontal_bias="0.392"
+        app:layout_constraintStart_toStartOf="parent">
 
     </TextView>
 
