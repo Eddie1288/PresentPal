@@ -67,10 +67,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Create an Intent to launch ItemsActivity and pass the selected name
-        Intent intent = new Intent(MainActivity.this, EditPersonActivity.class);
-        intent.putExtra("POS", 8);
-        startActivity(intent);
 
     }
 
