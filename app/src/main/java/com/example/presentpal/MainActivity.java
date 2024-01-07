@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         personListObj.setSharedList(personList);
 
         Gson gson = new Gson();
-        String json = gson.toJson(personListObj);
+        String json = gson.toJson(personList);
 
         Log.d("yeet", "Delete: " + json);
 
