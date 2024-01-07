@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
+        android:name=".PersonList"
         android:name=".CustomEventList"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -52,6 +53,25 @@
             android:label="@string/title_activity_birthday"
             android:theme="@style/Theme.PresentPal" />
         <activity
+            android:name=".GiftDetails"
+            android:exported="false" />
+        <activity
+            android:name=".AddGift"
+            android:exported="false"
+             />
+        <activity
+            android:name=".giftlist"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+            android:name=".EditPersonActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddPersonActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddPerson"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -61,5 +81,4 @@
             </intent-filter>
         </activity>
     </application>
-
 </manifest>
