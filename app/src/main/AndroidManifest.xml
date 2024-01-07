@@ -17,6 +17,9 @@
             android:name=".ViewEvents"
             android:exported="false" />
         <activity
+            android:name=".EditGift"
+            android:exported="false" />
+        <activity
             android:name=".EventsActivity"
             android:exported="false" />
         <activity
