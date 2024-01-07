@@ -85,12 +85,12 @@ public class MainActivity extends AppCompatActivity {
             String selectedName = selectedPerson.getName();
             ArrayList<Gift> Gifts = selectedPerson.getGifts();
 
-            // Create an Intent to launch add gift and pass the selected name
+
+
             Intent intent = new Intent(MainActivity.this, giftlist.class);
             intent.putExtra("NAME", selectedName);
             intent.putExtra("LIST", Gifts);
             startActivity(intent);
-
         });
         // Retrieve list of people
         SharedPreferences preferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);

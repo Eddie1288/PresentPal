@@ -9,6 +9,15 @@ public class Gift implements Serializable{
     public Gift(String name){
         this.name = name;
     }
+
+    public Gift(String name, String date, String link, String event, String price) {
+        this.name = name;
+        this.date = date;
+        this.link = link;
+        this.event = event;
+        this.price = price;
+    }
+
     public String getName() {
         return name;
     }
