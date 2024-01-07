@@ -126,7 +126,7 @@ public class AddPersonActivity extends AppCompatActivity {
 
     void addPerson() {
         // Create a new person object
-        Person person = new Person(nameText.getText().toString(), relationshipText.getText().toString(), selectedURI);
+        Person person = new Person(nameText.getText().toString(), relationshipText.getText().toString(), selectedURI, new ArrayList<Gift>());
 
         // Retrieve the global person list
         PersonList personList  = (PersonList) getApplication();

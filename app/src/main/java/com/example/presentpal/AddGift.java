@@ -27,7 +27,7 @@ public class AddGift extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Add A Gift");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         dateTXT = findViewById(R.id.date);
         cal = findViewById(R.id.datepicker);

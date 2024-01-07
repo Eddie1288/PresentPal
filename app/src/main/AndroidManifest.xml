@@ -19,7 +19,7 @@
         <activity
             android:name=".AddGift"
             android:exported="false"
-            android:parentActivityName=".giftlist" />
+             />
         <activity
             android:name=".giftlist"
             android:exported="false"
