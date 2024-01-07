@@ -1,6 +1,7 @@
 package com.example.presentpal;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -20,6 +21,11 @@ public class CustomEventActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom_event);
+
+        // Tool bar
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Create Custom Event");
 
         EditText editText = findViewById(R.id.eventName);
         Button btn = findViewById(R.id.eventAddedButton);
