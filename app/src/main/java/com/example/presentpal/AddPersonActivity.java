@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -100,10 +102,26 @@ public class AddPersonActivity extends AppCompatActivity {
                 if (null != selectedImageUri) {
                     // update the preview image in the layout
                     IVPreviewImage.setImageURI(selectedImageUri);
-                    selectedURI = selectedImageUri.toString();
+
+                    selectedURI = getPathFromURI(selectedImageUri);
+                    Log.d("Found url", "onActivityResult: " + selectedURI);
                 }
             }
         }
+    }
+
+    // Utility method to convert content URI to file path
+    private String getPathFromURI(Uri contentUri) {
+        String[] projection = {MediaStore.Images.Media.DATA};
+        Cursor cursor = getContentResolver().query(contentUri, projection, null, null, null);
+        if (cursor != null) {
+            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            cursor.moveToFirst();
+            String filePath = cursor.getString(column_index);
+            cursor.close();
+            return filePath;
+        }
+        return null;
     }
 
     void addPerson() {

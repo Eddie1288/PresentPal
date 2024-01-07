@@ -66,5 +66,31 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), AddPersonActivity.class));
             }
         });
+
+        // Create an Intent to launch ItemsActivity and pass the selected name
+        Intent intent = new Intent(MainActivity.this, EditPersonActivity.class);
+        intent.putExtra("POS", 8);
+        startActivity(intent);
+
+    }
+
+    void deletePerson(int pos) {
+        PersonList personListObj = (PersonList) getApplication();
+        ArrayList<Person> personList = personListObj.getSharedList();
+
+        personList.remove(pos);
+        personListObj.setSharedList(personList);
+
+        Gson gson = new Gson();
+        String json = gson.toJson(personListObj);
+
+        Log.d("yeet", "Delete: " + json);
+
+        // Save JSON string to SharedPreferences
+        SharedPreferences preferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("PersonList", json);
+        editor.apply();
+
     }
 }
