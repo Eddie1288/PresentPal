@@ -33,6 +33,8 @@ public class AddGift extends AppCompatActivity {
     EditText dateTXT;
     EditText priceTXT;
     EditText linkTXT;
+    EditText occasionSelected;
+    TextView occasion;
     ImageView cal;
     Button addGiftButton;
     TextView ocassionPrompt;
@@ -58,6 +60,8 @@ public class AddGift extends AppCompatActivity {
         ocassionPrompt = findViewById(R.id.event_selected);
         ocassion = findViewById(R.id.event);
         addGiftButton = findViewById(R.id.add_gift_button);
+        occasion = findViewById(R.id.textView6);
+        occasionSelected = findViewById(R.id.editTextText);
 
         ocassionPrompt.setText("Event selected");
         Intent intent = new Intent();
@@ -86,7 +90,7 @@ public class AddGift extends AppCompatActivity {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(AddGift.this, android.R.style.Theme_DeviceDefault_Dialog, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int date) {
-                        dateTXT.setText(date+"-"+month+"-"+year);
+                        dateTXT.setText(date+"-"+(month+1)+"-"+year);
                     }
                 },mYear,mMonth, mDate);
                 datePickerDialog.show();
@@ -110,7 +114,9 @@ public class AddGift extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Based on constructor Gift(String name, String date, String link, String event, String price)
+
                 Gift gift = new Gift(nameTXT.getText().toString(), dateTXT.getText().toString(), linkTXT.getText().toString(), selectedEvent ,priceTXT.getText().toString());
+
                 finalGiftList.add(gift);
 
                 // Get personlist global vars

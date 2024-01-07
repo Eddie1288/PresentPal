@@ -26,6 +26,8 @@ public class EditGift extends AppCompatActivity {
     EditText dateValue;
     EditText price;
     EditText link;
+    EditText occasionSelected;
+    TextView occasion;
     Button confirmEdit;
     ImageView cal;
     Button addGiftButton;
@@ -47,7 +49,13 @@ public class EditGift extends AppCompatActivity {
         addGiftButton = findViewById(R.id.add_gift_button);
         cal = findViewById(R.id.datepicker);
         addGiftButton = findViewById(R.id.add_gift_button);
+
         editEvent = findViewById(R.id.edit_event);
+
+        occasion = findViewById(R.id.textView5);
+        occasionSelected = findViewById(R.id.editTextText);
+
+
 
         if(intent.hasExtra("GIFT")){
             gift = (Gift) intent.getSerializableExtra("GIFT");
@@ -55,7 +63,11 @@ public class EditGift extends AppCompatActivity {
             dateValue.setText(gift.getDate());
             price.setText(gift.getPrice());
             link.setText(gift.getLink());
+
             editEvent.setText(gift.getEvent());
+
+            occasionSelected.setText(gift.getEvent());
+
 
             Log.d("yeet", "test?: " + gift);
         } else {
@@ -79,16 +91,25 @@ public class EditGift extends AppCompatActivity {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(EditGift.this, android.R.style.Theme_DeviceDefault_Dialog, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int date) {
-                        dateValue.setText(date+"-"+month+"-"+year);
+                        dateValue.setText(date+"-"+(month + 1)+"-"+year);
                     }
                 },mYear,mMonth, mDate);
                 datePickerDialog.show();
             }
         });
+
+        Button btn = findViewById(R.id.button);
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), EventsActivity.class));
+            }
+        });
     }
 
     void editGift() {
-        Gift newGift = new Gift(giftName.getText().toString(), dateValue.getText().toString(), link.getText().toString(), null, price.getText().toString());
+        Gift newGift = new Gift(giftName.getText().toString(), dateValue.getText().toString(), link.getText().toString(), occasionSelected.getText().toString(), price.getText().toString());
 
         GlobalVars globalVars  = (GlobalVars) getApplication();
         ArrayList<Person> sharedPersonList = globalVars.getPersonList();

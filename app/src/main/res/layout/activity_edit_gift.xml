@@ -8,98 +8,116 @@
 
     <include
         android:id="@+id/toolbar"
-        layout="@layout/toolbar" />
+        layout="@layout/toolbar"
+        app:layout_constraintBottom_toTopOf="@+id/textView7"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/textView7"
+
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Edit gift"
-        android:textSize="40dp"
-        app:layout_constraintBottom_toTopOf="@+id/add_gift_name"
+        android:layout_marginBottom="70dp"
+        android:text="Edit Gift"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@+id/date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
     </TextView>
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/add_gift_name"
-        android:layout_width="321dp"
-        android:layout_height="50dp"
-        android:hint="Name of gift"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.19999999" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
-        android:layout_width="409dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="31dp"
+        app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_gift_name">
+        app:layout_constraintTop_toBottomOf="@+id/textView5">
 
     </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/add_gift_price"
-        android:layout_width="320dp"
-        android:layout_height="44dp"
-        android:layout_marginBottom="360dp"
-        android:hint="Price"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_gift_name" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/add_gift_link"
-        android:layout_width="320dp"
-        android:layout_height="44dp"
-        android:hint="Link"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_gift_price"
-        app:layout_constraintVertical_bias="0.050000012" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Select The Occassion"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_gift_link"
-        app:layout_constraintVertical_bias="0.18" />
-
-    <EditText
-        android:id="@+id/date"
-        android:layout_width="260dp"
-        android:layout_height="50dp"
-        android:hint="Select a date"
-        app:layout_constraintBottom_toTopOf="@+id/add_gift_price"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_gift_name" />
+        android:layout_marginBottom="33dp"
+        android:text="Edit The Occasion"
+        app:layout_constraintBottom_toTopOf="@+id/confirm_gift_button"
+        app:layout_constraintEnd_toEndOf="@+id/confirm_gift_button"
+        app:layout_constraintStart_toStartOf="@+id/confirm_gift_button"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
     <ImageView
         android:id="@+id/datepicker"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="65dp"
+        android:layout_height="53dp"
         android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="@+id/date"
+        app:layout_constraintEnd_toEndOf="@+id/add_gift_name"
+        app:layout_constraintTop_toTopOf="@+id/date"
+        app:srcCompat="@drawable/calender" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/add_gift_price"
+        android:layout_width="324dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="12dp"
+        android:hint="Price"
+        app:layout_constraintBottom_toTopOf="@+id/add_gift_link"
+        app:layout_constraintStart_toStartOf="@+id/date"
+        app:layout_constraintTop_toBottomOf="@+id/date" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/add_gift_link"
+        android:layout_width="324dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="35dp"
+        android:hint="Link"
+        app:layout_constraintBottom_toTopOf="@+id/textView5"
+        app:layout_constraintStart_toStartOf="@+id/add_gift_price"
+        app:layout_constraintTop_toBottomOf="@+id/add_gift_price" />
+
+    <EditText
+        android:id="@+id/date"
+        android:layout_width="234dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="10dp"
+        android:hint="Select a date"
+        app:layout_constraintBottom_toTopOf="@+id/add_gift_price"
+        app:layout_constraintStart_toStartOf="@+id/add_gift_name"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/add_gift_name"
+        android:layout_width="0dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginBottom="61dp"
+        android:hint="Name of gift"
         app:layout_constraintBottom_toTopOf="@+id/add_gift_price"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.23"
-        app:layout_constraintStart_toEndOf="@+id/date"
-        app:layout_constraintTop_toBottomOf="@+id/add_gift_name"
-        app:srcCompat="@drawable/calender" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView7" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="84dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="24dp"
+        android:hint="Occasion:"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/textInputLayout"
+        app:layout_constraintStart_toStartOf="@+id/add_gift_link"
+        app:layout_constraintTop_toBottomOf="@+id/add_gift_link" />
 
     <TextView
         android:id="@+id/edit_event"
@@ -126,13 +144,23 @@
         android:id="@+id/confirm_gift_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="112dp"
         android:text="Confirm Edit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"></Button>
+        app:layout_constraintTop_toBottomOf="@+id/button" />
 
-
+    <EditText
+        android:id="@+id/editTextText"
+        android:layout_width="216dp"
+        android:layout_height="55dp"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="@string/editTextHint"
+        app:layout_constraintBottom_toBottomOf="@+id/textView5"
+        app:layout_constraintEnd_toEndOf="@+id/add_gift_link"
+        app:layout_constraintTop_toTopOf="@+id/textView5"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
