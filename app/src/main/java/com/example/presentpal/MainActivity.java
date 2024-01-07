@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
             String selectedName = selectedPerson.getName();
             ArrayList<Gift> Gifts = selectedPerson.getGifts();
 
-            // Create an Intent to launch addgift and pass the selected name
+            // Create an Intent to launch add gift and pass the selected name
             Intent intent = new Intent(MainActivity.this, giftlist.class);
             intent.putExtra("NAME", selectedName);
             intent.putExtra("LIST", Gifts);
@@ -97,10 +97,7 @@ public class MainActivity extends AppCompatActivity {
         String personJson = preferences.getString("PersonList", "");
         String eventJson = preferences.getString("EventList", "");
 
-        PersonList personList = (PersonList) getApplication();
-
-        // Retrieve list of events
-        CustomEventList customEventList = (CustomEventList) getApplication();
+        GlobalVars globalVars = (GlobalVars) getApplication();
 
         // If the retrieved person list from storage is not empty, then set as the person list
         if (personJson.length() != 0) {
@@ -109,10 +106,10 @@ public class MainActivity extends AppCompatActivity {
             Log.d("yeet", "onCreate: " + personJson);
             Type type = new TypeToken<ArrayList<Person>>() {}.getType();
             ArrayList<Person> retrievedPersonList = gson.fromJson(personJson, type);
-            personList.setSharedList(retrievedPersonList);
+            globalVars.setPersonList(retrievedPersonList);
         } else {
             // Otherwise, just create a new list of people
-            personList.setSharedList(new ArrayList<Person>());
+            globalVars.setPersonList(new ArrayList<Person>());
         }
 
         // If the retrieved event list from storage is not empty, then set as the person list
@@ -122,10 +119,10 @@ public class MainActivity extends AppCompatActivity {
             Log.d("yeet", "onCreate: " + eventJson);
             Type type = new TypeToken<ArrayList<String>>() {}.getType();
             ArrayList<String> retrievedEventList = gson.fromJson(eventJson, type);
-            customEventList.setSharedList(retrievedEventList);
+            globalVars.setEventList(retrievedEventList);
         } else {
             // Otherwise, just create a new list of people
-            customEventList.setSharedList(new ArrayList<String>());
+            globalVars.setEventList(new ArrayList<String>());
         }
 
         addPersonButton = findViewById(R.id.add_person_button);
@@ -138,23 +135,22 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    void deletePerson(int pos) {
-        PersonList personListObj = (PersonList) getApplication();
-        ArrayList<Person> personList = personListObj.getSharedList();
-
-        personList.remove(pos);
-        personListObj.setSharedList(personList);
-
-        Gson gson = new Gson();
-        String json = gson.toJson(personList);
-
-        Log.d("yeet", "Delete: " + json);
-
-        // Save JSON string to SharedPreferences
-        SharedPreferences preferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("PersonList", json);
-        editor.apply();
-
-    }
+//    void deletePerson(int pos) {
+//        PersonList personListObj = (PersonList) getApplication();
+//        ArrayList<Person> personList = personListObj.getSharedList();
+//
+//        personList.remove(pos);
+//        personListObj.setSharedList(personList);
+//
+//        Gson gson = new Gson();
+//        String json = gson.toJson(personList);
+//
+//        Log.d("yeet", "Delete: " + json);
+//
+//        // Save JSON string to SharedPreferences
+//        SharedPreferences preferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+//        SharedPreferences.Editor editor = preferences.edit();
+//        editor.putString("PersonList", json);
+//        editor.apply();
+//    }
 }

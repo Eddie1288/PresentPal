@@ -40,7 +40,7 @@ public class EditPersonActivity extends AppCompatActivity {
         BSelectImage = findViewById(R.id.select_photo_button2);
         confirmEditButton = findViewById(R.id.confirm_edit_button);
 
-        PersonList personListObj = (PersonList) getApplication();
+        GlobalVars personListObj = (GlobalVars) getApplication();
 
         Intent intent = getIntent();
         Bundle b = intent.getExtras();
@@ -48,7 +48,7 @@ public class EditPersonActivity extends AppCompatActivity {
         if(b!=null)
         {
             pos = (Integer) b.get("POS");
-            Person person = personListObj.getSharedList().get(pos);
+            Person person = personListObj.getPersonList().get(pos);
             Log.d("yeet", "URI: " + person.getPhotoURL());
 
             nameText.setText(person.getName());
@@ -79,15 +79,15 @@ public class EditPersonActivity extends AppCompatActivity {
     }
 
     void editPerson(int pos) {
-        PersonList personListObj = (PersonList) getApplication();
-        ArrayList<Person> personList = personListObj.getSharedList();
+        GlobalVars personListObj = (GlobalVars) getApplication();
+        ArrayList<Person> personList = personListObj.getPersonList();
 
         Person person = personList.get(pos);
         person.setName(nameText.getText().toString());
         person.setRelationship(relationshipText.getText().toString());
 
         personList.set(pos, person);
-        personListObj.setSharedList(personList);
+        personListObj.setPersonList(personList);
 
         Gson gson = new Gson();
         String json = gson.toJson(personList);

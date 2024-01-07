@@ -27,14 +27,14 @@ public class CustomEventActivity extends AppCompatActivity {
         btn.setOnClickListener(v -> {
             String data = editText.getText().toString();
 
-            CustomEventList customEventList  = (CustomEventList) getApplication();
-            ArrayList<String> sharedEventList = customEventList.getSharedList();
+            GlobalVars globalVars  = (GlobalVars) getApplication();
+            ArrayList<String> sharedEventList = globalVars.getEventList();
 
             // Add this person to this list
             sharedEventList.add(data);
 
             // Update the person list
-            customEventList.setSharedList(sharedEventList);
+            globalVars.setEventList(sharedEventList);
 
             // Convert list to a JSON string
             Gson gson = new Gson();

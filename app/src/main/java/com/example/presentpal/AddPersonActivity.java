@@ -129,14 +129,14 @@ public class AddPersonActivity extends AppCompatActivity {
         Person person = new Person(nameText.getText().toString(), relationshipText.getText().toString(), selectedURI, new ArrayList<Gift>());
 
         // Retrieve the global person list
-        PersonList personList  = (PersonList) getApplication();
-        ArrayList<Person> sharedPersonList = personList.getSharedList();
+        GlobalVars globalVars  = (GlobalVars) getApplication();
+        ArrayList<Person> sharedPersonList = globalVars.getPersonList();
 
         // Add this person to this list
         sharedPersonList.add(person);
 
         // Update the person list
-        personList.setSharedList(sharedPersonList);
+        globalVars.setPersonList(sharedPersonList);
 
         // Convert list to a JSON string
         Gson gson = new Gson();

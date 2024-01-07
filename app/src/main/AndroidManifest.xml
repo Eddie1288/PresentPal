@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
-        android:name=".PersonList"
-        android:name=".CustomEventList"
+        android:name=".GlobalVars"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -62,14 +61,12 @@
         <activity
             android:name=".giftlist"
             android:exported="false"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainActivity"/>
+        <activity
             android:name=".EditPersonActivity"
             android:exported="false" />
         <activity
             android:name=".AddPersonActivity"
-            android:exported="false" />
-        <activity
-            android:name=".AddPerson"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
