@@ -54,12 +54,18 @@ public class EditPersonActivity extends AppCompatActivity {
             nameText.setText(person.getName());
             relationshipText.setText(person.getRelationship());
 
-            File photoFile = new File(person.getPhotoURL());
-            if (photoFile.exists()) {
-                IVPreviewImage.setImageURI(Uri.fromFile(photoFile));
-            } else {
-                Toast.makeText(personListObj, "Image does not exist", Toast.LENGTH_SHORT).show();
+            try {
+                File photoFile = new File(person.getPhotoURL());
+                if (photoFile.exists()) {
+                    IVPreviewImage.setImageURI(Uri.fromFile(photoFile));
+                } else {
+                    Toast.makeText(personListObj, "Image does not exist", Toast.LENGTH_SHORT).show();
+                }
+            } catch (Exception e) {
+
             }
+
+
         }
 
         BSelectImage.setOnClickListener(new View.OnClickListener() {
