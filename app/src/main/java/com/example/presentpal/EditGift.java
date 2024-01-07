@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 
@@ -28,6 +29,7 @@ public class EditGift extends AppCompatActivity {
     Button confirmEdit;
     ImageView cal;
     Button addGiftButton;
+    TextView editEvent;
     private int mDate, mMonth, mYear;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,7 @@ public class EditGift extends AppCompatActivity {
         addGiftButton = findViewById(R.id.add_gift_button);
         cal = findViewById(R.id.datepicker);
         addGiftButton = findViewById(R.id.add_gift_button);
+        editEvent = findViewById(R.id.edit_event);
 
         if(intent.hasExtra("GIFT")){
             gift = (Gift) intent.getSerializableExtra("GIFT");
@@ -52,6 +55,7 @@ public class EditGift extends AppCompatActivity {
             dateValue.setText(gift.getDate());
             price.setText(gift.getPrice());
             link.setText(gift.getLink());
+            editEvent.setText(gift.getEvent());
 
             Log.d("yeet", "test?: " + gift);
         } else {

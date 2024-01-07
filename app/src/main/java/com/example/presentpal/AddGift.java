@@ -12,6 +12,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -21,6 +23,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Calendar;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
 import android.content.Intent;
@@ -32,7 +35,11 @@ public class AddGift extends AppCompatActivity {
     EditText linkTXT;
     ImageView cal;
     Button addGiftButton;
+    TextView ocassionPrompt;
+    TextView ocassion;
     private int mDate, mMonth, mYear;
+    private String selectedEvent;
+    final static int CODE = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,8 +55,11 @@ public class AddGift extends AppCompatActivity {
         linkTXT = findViewById(R.id.add_gift_link);
         dateTXT = findViewById(R.id.date);
         cal = findViewById(R.id.datepicker);
+        ocassionPrompt = findViewById(R.id.event_selected);
+        ocassion = findViewById(R.id.event);
         addGiftButton = findViewById(R.id.add_gift_button);
 
+        ocassionPrompt.setText("Event selected");
         Intent intent = new Intent();
 //        ArrayList<Gift> giftList = (ArrayList<Gift>) intent.getSerializableExtra("LIST");
 
@@ -88,7 +98,10 @@ public class AddGift extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), EventsActivity.class));
+                Intent intent = new Intent(getApplicationContext(), EventsActivity.class);
+                Log.d("yeet", "onClick: " + "GOO");
+                startActivityForResult(intent, CODE);
+
             }
         });
 
@@ -97,7 +110,7 @@ public class AddGift extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Based on constructor Gift(String name, String date, String link, String event, String price)
-                Gift gift = new Gift(nameTXT.getText().toString(), dateTXT.getText().toString(), linkTXT.getText().toString(), null ,priceTXT.getText().toString());
+                Gift gift = new Gift(nameTXT.getText().toString(), dateTXT.getText().toString(), linkTXT.getText().toString(), selectedEvent ,priceTXT.getText().toString());
                 finalGiftList.add(gift);
 
                 // Get personlist global vars
@@ -134,5 +147,16 @@ public class AddGift extends AppCompatActivity {
                 finish();
             }
         });
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == CODE && resultCode == Activity.RESULT_OK) {
+
+            Log.d("yeet", "Event selected: " + data.getStringExtra("EVENT"));
+            selectedEvent = data.getStringExtra("EVENT");
+            ocassion.setText(selectedEvent);
+        }
     }
 }

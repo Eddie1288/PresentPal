@@ -3,8 +3,10 @@ package com.example.presentpal;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import java.util.ArrayList;
@@ -52,8 +54,12 @@ public class EventsActivity extends AppCompatActivity {
 
             if (selectedActivityClass != null) {
                 // Create an Intent to launch ItemsActivity and pass the selected name
-                Intent intent = new Intent(EventsActivity.this, selectedActivityClass);
-                startActivity(intent);
+                Intent resultIntent = new Intent();
+                resultIntent.putExtra("EVENT", selectedEvent);
+                Log.d("yeet", "onCreate: " + selectedEvent);
+                setResult(Activity.RESULT_OK, resultIntent);
+                finish();
+//                startActivity(intent);
             }
         });
     }

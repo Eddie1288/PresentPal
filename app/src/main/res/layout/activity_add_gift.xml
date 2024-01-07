@@ -56,6 +56,29 @@
         app:layout_constraintTop_toBottomOf="@+id/add_gift_price"
         app:layout_constraintVertical_bias="0.050000012" />
 
+    <TextView
+        android:id="@+id/event"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/event_selected"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.237"
+        app:layout_constraintStart_toEndOf="@+id/event_selected"></TextView>
+
+    <TextView
+        android:id="@+id/event_selected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Event selected:"
+        app:layout_constraintBottom_toTopOf="@+id/textInputLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.343"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_gift_link"
+        app:layout_constraintVertical_bias="0.513">
+
+    </TextView>
+
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
