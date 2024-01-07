@@ -32,11 +32,16 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
+import android.view.ContextMenu;
+import android.view.MenuItem;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     FloatingActionButton addPersonButton;
     Button editButton;
     Button deleteButton;
+    ArrayAdapter<Person> adapter;
+    GlobalVars globalVars;
 
     public MainActivity() {
         // this method fires only once per application start.
@@ -57,14 +62,14 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("PresentPal");
 
         // Find the ListView
-        ListView listView = findViewById(R.id.namelistview);
+        ListView namelist = findViewById(R.id.namelistview);
 
         // Retrieve list of people
         SharedPreferences preferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         String personJson = preferences.getString("PersonList", "");
         String eventJson = preferences.getString("EventList", "");
 
-        GlobalVars globalVars = (GlobalVars) getApplication();
+        globalVars = (GlobalVars) getApplication();
 
         // If the retrieved person list from storage is not empty, then set as the person list
         if (personJson.length() != 0) {
@@ -92,35 +97,12 @@ public class MainActivity extends AppCompatActivity {
             globalVars.setEventList(new ArrayList<String>());
         }
 
-        // This is the code for going to the edit activity for a specific person
-//        Intent intent = new Intent(MainActivity.this, EditPersonActivity.class);
-//        intent.putExtra("POS", 1);
-//        startActivity(intent);
-
-//        ArrayList<Person> namesList = new ArrayList<>();
-//        Person person1 = new Person("Alice");
-//
-//        ArrayList<Gift> person1Gift = new ArrayList<>();
-//        person1Gift.add(new Gift("car"));
-//        person1Gift.add(new Gift("hands"));
-//        person1.setGifts(person1Gift);
-//
-//        namesList.add(person1);
-//        namesList.add(new Person("Bob"));
-//        namesList.add(new Person("Charlie"));
-//        namesList.add(new Person("Daniel"));
-//        namesList.add(new Person("Huey"));
-//        namesList.add(new Person("Chris"));
-//        namesList.add(new Person("Bill"));
-
-        // Add more names as needed
-
         // Create an ArrayAdapter and set it to the ListView
-        ArrayAdapter<Person> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, globalVars.getPersonList());
-        listView.setAdapter(adapter);
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, globalVars.getPersonList());
+        namelist.setAdapter(adapter);
 
         // Handle item clicks
-        listView.setOnItemClickListener((parent, view, position, id) -> {
+        namelist.setOnItemClickListener((parent, view, position, id) -> {
             Person selectedPerson = globalVars.getPersonList().get(position);
             String selectedName = selectedPerson.getName();
             ArrayList<Gift> Gifts = selectedPerson.getGifts();
@@ -141,30 +123,37 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                adapter.remove(globalVars.getPersonList().get(position));
-                adapter.notifyDataSetChanged();
-                deletePerson(position);
-                return false;
-            }
-        });
+        registerForContextMenu(namelist);
+    }
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
 
-        // Handle item clicks
-//        listView.setOnItemClickListener((parent, view, position, id) -> {
-//            Person selectedPerson = globalVars.getPersonList().get(position);
-//            String selectedName = selectedPerson.getName();
-//            ArrayList<Gift> Gifts = selectedPerson.getGifts();
-//
-//            // Create an Intent to launch add gift and pass the selected name
-//            Intent intent = new Intent(MainActivity.this, giftlist.class);
-//            Log.d("Yeet", "details: " + selectedName + " " + Gifts);
-//            intent.putExtra("NAME", selectedName);
-//            intent.putExtra("LIST", Gifts);
-//            startActivity(intent);
-//
-//        });
+        getMenuInflater().inflate(R.menu.edit_delete_people, menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        int position = info.position;
+        if (item.getItemId() == R.id.edit_option) {
+            // Edit Person: Implement the logic for editing a person
+            Toast.makeText(this, "Person Edited", Toast.LENGTH_SHORT).show();
+            Intent edit = new Intent(MainActivity.this, EditPersonActivity.class);
+            edit.putExtra("POS", position);
+            startActivity(edit);
+            return true;
+        } else if (item.getItemId() == R.id.delete_option) {
+            // Delete Person: Implement the logic for deleting a person
+            Toast.makeText(this, "Person Deleted", Toast.LENGTH_SHORT).show();
+            adapter.remove(globalVars.getPersonList().get(position));
+            adapter.notifyDataSetChanged();
+            deletePerson(position);
+            Toast.makeText(this, "Person Deleted at position: " + position, Toast.LENGTH_SHORT).show();
+            return true;
+        } else {
+            return super.onContextItemSelected(item);
+        }
     }
 
     void deletePerson(int pos) {
