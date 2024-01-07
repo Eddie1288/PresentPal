@@ -10,23 +10,8 @@
         android:id="@+id/toolbar"
         layout="@layout/toolbar" />
 
-<!--    <ImageButton-->
-<!--        android:id="@+id/presentbutton"-->
-<!--        android:layout_width="70dp"-->
-<!--        android:layout_height="70dp"-->
-<!--        android:scaleType="fitXY"-->
-<!--        android:background="@null"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.88"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="@+id/giftlistview"-->
-<!--        app:layout_constraintVertical_bias="0.9"-->
-<!--        app:srcCompat="@drawable/present" />-->
-
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/fabaddgift"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
@@ -48,11 +33,25 @@
         app:layout_constraintStart_toStartOf="@+id/giftlistview"
         tools:layout_editor_absoluteY="668dp" />
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Gift"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.91"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fabaddgift"
+        app:layout_constraintVertical_bias="0.0" />
+
     <ListView
         android:id="@+id/giftlistview"
         android:layout_width="409dp"
         android:layout_height="729dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="0.49"
         tools:layout_editor_absoluteX="0dp">
 
     </ListView>
