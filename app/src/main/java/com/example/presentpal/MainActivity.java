@@ -89,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
 
             Intent intent = new Intent(MainActivity.this, giftlist.class);
             intent.putExtra("NAME", selectedName);
+            intent.putExtra("POS", position);
             intent.putExtra("LIST", Gifts);
             startActivity(intent);
         });

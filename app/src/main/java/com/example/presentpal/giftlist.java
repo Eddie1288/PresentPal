@@ -18,7 +18,7 @@ public class giftlist extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_giftlist);       
+        setContentView(R.layout.activity_giftlist);
 
         // Tool bar
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -36,11 +36,13 @@ public class giftlist extends AppCompatActivity {
         // Create an ArrayAdapter and set it to the ListView
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, giftList);
         listView.setAdapter(adapter);
-
+        Log.d("poop", "onCreate: +" + giftList);
         FloatingActionButton fab = findViewById(R.id.fabaddgift);
         fab.setOnClickListener(new View.OnClickListener() {
+
             @Override
-            public void onClick(View view){
+            public void onClick(View view) {
+                GlobalVars globalVars = (GlobalVars) getApplication();
                 Intent intent = new Intent(giftlist.this, AddGift.class);
 
                 Log.d("yeet", "giftlist: " + giftList);

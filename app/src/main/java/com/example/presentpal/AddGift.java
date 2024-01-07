@@ -22,6 +22,13 @@ import com.google.gson.Gson;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Calendar;
+import android.widget.Button;
+import android.widget.Toast;
+import java.util.ArrayList;
+import android.content.Intent;
+
+
+
 
 public class AddGift extends AppCompatActivity {
     EditText nameTXT;
@@ -40,7 +47,6 @@ public class AddGift extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Add A Gift");
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         nameTXT = findViewById(R.id.add_gift_name);
         priceTXT = findViewById(R.id.add_gift_price);
