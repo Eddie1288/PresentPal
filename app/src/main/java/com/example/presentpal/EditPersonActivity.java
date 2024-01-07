@@ -79,6 +79,7 @@ public class EditPersonActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 editPerson(pos);
+                finish();
             }
         });
 
