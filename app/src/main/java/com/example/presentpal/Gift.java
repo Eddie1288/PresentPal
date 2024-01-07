@@ -5,6 +5,7 @@ public class Gift implements Serializable{
     private String date;
     private String link;
     private String event;
+    private String price;
     public Gift(String name){
         this.name = name;
     }

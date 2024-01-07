@@ -21,6 +21,7 @@ public class giftlist extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Wish List");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // Find the ListView
         ListView listView = findViewById(R.id.giftlistview);
