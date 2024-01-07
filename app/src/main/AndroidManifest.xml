@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
+        android:name=".CustomEventList"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -13,37 +14,40 @@
         android:theme="@style/Theme.PresentPal"
         tools:targetApi="31">
         <activity
-            android:name=".CustomEvent"
+            android:name=".EventsActivity"
             android:exported="false" />
         <activity
-            android:name=".ShoppingList"
+            android:name=".CustomEventActivity"
             android:exported="false" />
         <activity
-            android:name=".Date"
+            android:name=".ShoppingListActivity"
             android:exported="false" />
         <activity
-            android:name=".HouseWarming"
+            android:name=".DateActivity"
             android:exported="false" />
         <activity
-            android:name=".FathersDay"
+            android:name=".HouseWarmingActivity"
             android:exported="false" />
         <activity
-            android:name=".MothersDay"
+            android:name=".FathersDayActivity"
             android:exported="false" />
         <activity
-            android:name=".BabyShower"
+            android:name=".MothersDayActivity"
             android:exported="false" />
         <activity
-            android:name=".Anniversary"
+            android:name=".BabyShowerActivity"
             android:exported="false" />
         <activity
-            android:name=".Wedding"
+            android:name=".AnniversaryActivity"
             android:exported="false" />
         <activity
-            android:name=".Christmas"
+            android:name=".WeddingActivity"
             android:exported="false" />
         <activity
-            android:name=".Birthday"
+            android:name=".ChristmasActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BirthdayActivity"
             android:exported="false"
             android:label="@string/title_activity_birthday"
             android:theme="@style/Theme.PresentPal" />

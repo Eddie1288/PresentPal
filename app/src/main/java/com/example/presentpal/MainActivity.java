@@ -2,10 +2,17 @@ package com.example.presentpal;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+import android.util.Log;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,92 +21,27 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button birthday = findViewById(R.id.birthday);
-        birthday.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, Birthday.class));
-            }
-        });
+        // Retrieve list of people
+        SharedPreferences preferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        String json = preferences.getString("EventList", "");
 
-        Button christmas = findViewById(R.id.christmas);
-        christmas.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, Christmas.class));
-            }
-        });
+        // Retrieve list of people
+        CustomEventList customEventList = (CustomEventList) getApplication();
+        // If the retrieved person list from storage is not empty, then set as the person list
+        if (json.length() != 0) {
+            // Convert the JSON string back to a list of objects
+            Gson gson = new Gson();
+            Log.d("yeet", "onCreate: " + json);
+            Type type = new TypeToken<ArrayList<String>>() {}.getType();
+            ArrayList<String> retrievedEventList = gson.fromJson(json, type);
+            customEventList.setSharedList(retrievedEventList);
+        } else {
+            // Otherwise, just create a new list of people
+            customEventList.setSharedList(new ArrayList<String>());
+        }
 
-        Button wedding = findViewById(R.id.wedding);
-        wedding.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, Wedding.class));
-            }
-        });
-
-        Button anniversary = findViewById(R.id.anniversary);
-        anniversary.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, Anniversary.class));
-            }
-        });
-
-        Button babyShower = findViewById(R.id.babyShower);
-        babyShower.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, BabyShower.class));
-            }
-        });
-
-        Button mothersDay = findViewById(R.id.mothersDay);
-        mothersDay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, MothersDay.class));
-            }
-        });
-
-        Button fathersDay = findViewById(R.id.fathersDay);
-        fathersDay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, FathersDay.class));
-            }
-        });
-
-        Button houseWarming = findViewById(R.id.houseWarming);
-        houseWarming.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, HouseWarming.class));
-            }
-        });
-
-        Button date = findViewById(R.id.date);
-        date.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, Date.class));
-            }
-        });
-
-        Button shoppingList = findViewById(R.id.shoppingList);
-        shoppingList.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, ShoppingList.class));
-            }
-        });
-
-        Button customEvent = findViewById(R.id.customEvent);
-        customEvent.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, CustomEvent.class));
-            }
-        });
+        // Create an Intent to launch ItemsActivity and pass the selected name
+        Intent intent = new Intent(MainActivity.this, EventsActivity.class);
+        startActivity(intent);
     }
 }
