@@ -21,6 +21,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Calendar;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
 import android.content.Intent;
@@ -30,6 +31,8 @@ public class AddGift extends AppCompatActivity {
     EditText dateTXT;
     EditText priceTXT;
     EditText linkTXT;
+    EditText occasionSelected;
+    TextView occasion;
     ImageView cal;
     Button addGiftButton;
     private int mDate, mMonth, mYear;
@@ -49,6 +52,8 @@ public class AddGift extends AppCompatActivity {
         dateTXT = findViewById(R.id.date);
         cal = findViewById(R.id.datepicker);
         addGiftButton = findViewById(R.id.add_gift_button);
+        occasion = findViewById(R.id.textView6);
+        occasionSelected = findViewById(R.id.editTextText);
 
         Intent intent = new Intent();
 //        ArrayList<Gift> giftList = (ArrayList<Gift>) intent.getSerializableExtra("LIST");
@@ -97,7 +102,7 @@ public class AddGift extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Based on constructor Gift(String name, String date, String link, String event, String price)
-                Gift gift = new Gift(nameTXT.getText().toString(), dateTXT.getText().toString(), linkTXT.getText().toString(), null ,priceTXT.getText().toString());
+                Gift gift = new Gift(nameTXT.getText().toString(), dateTXT.getText().toString(), linkTXT.getText().toString(), occasionSelected.getText().toString() ,priceTXT.getText().toString());
                 finalGiftList.add(gift);
 
                 // Get personlist global vars
