@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 
@@ -25,6 +26,8 @@ public class EditGift extends AppCompatActivity {
     EditText dateValue;
     EditText price;
     EditText link;
+    EditText occasionSelected;
+    TextView occasion;
     Button confirmEdit;
     ImageView cal;
     Button addGiftButton;
@@ -45,6 +48,9 @@ public class EditGift extends AppCompatActivity {
         addGiftButton = findViewById(R.id.add_gift_button);
         cal = findViewById(R.id.datepicker);
         addGiftButton = findViewById(R.id.add_gift_button);
+        occasion = findViewById(R.id.textView5);
+        occasionSelected = findViewById(R.id.editTextText);
+
 
         if(intent.hasExtra("GIFT")){
             gift = (Gift) intent.getSerializableExtra("GIFT");
@@ -52,6 +58,7 @@ public class EditGift extends AppCompatActivity {
             dateValue.setText(gift.getDate());
             price.setText(gift.getPrice());
             link.setText(gift.getLink());
+            occasionSelected.setText(gift.getEvent());
 
             Log.d("yeet", "test?: " + gift);
         } else {
@@ -81,10 +88,19 @@ public class EditGift extends AppCompatActivity {
                 datePickerDialog.show();
             }
         });
+
+        Button btn = findViewById(R.id.button);
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), EventsActivity.class));
+            }
+        });
     }
 
     void editGift() {
-        Gift newGift = new Gift(giftName.getText().toString(), dateValue.getText().toString(), link.getText().toString(), null, price.getText().toString());
+        Gift newGift = new Gift(giftName.getText().toString(), dateValue.getText().toString(), link.getText().toString(), occasionSelected.getText().toString(), price.getText().toString());
 
         GlobalVars globalVars  = (GlobalVars) getApplication();
         ArrayList<Person> sharedPersonList = globalVars.getPersonList();
